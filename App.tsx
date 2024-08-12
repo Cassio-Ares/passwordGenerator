@@ -18,3 +18,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
+/**
+ * install
+ * 
+ *    npx create-expo-app nameProject --template
+ * 
+ *    npx expo 
+ * 
+ * 
+ * 
+ * obs: 
+ * 
+ * app.json
+ * mostra o que aparece quando app é inicializado.
+ 
+      "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+
+    },
+ */
