@@ -1,22 +1,15 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native"; 
-//tags do reactNative ex: Image source = img src ; View = div ...
-
+import { Image, StyleSheet, Text, TouchableOpacity, View, Modal } from "react-native";
+import ModalPassword from "./src/components/modal";
 import Slider from "@react-native-community/slider";
-/**
- * slider instalado como recurso do expo:
- * 
- * npx expo install @react-native-community/slider
- */
 
 import { useState } from "react";
+
 
 export default function App() {
   const [size, setSize] = useState(10)
   const [passwordValue, setPasswordValue] = useState('')
+  const [openModal, setOpenModal] = useState(false) // state para abrir e fechar o modal
 
-/**
- * funçao que recebe size para iterar no for para criar um password
- */
   function generatePassword() {
     const hash = 'abcdefghijklmnopqrstuvwxyzAbCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
     let password = '';
@@ -27,20 +20,21 @@ export default function App() {
     }
 
     setPasswordValue(password)
+    setOpenModal(true)   //muda o state do modal 
   }
 
 
   return (
     <View style={styles.container}>
       <Image
-        source={require('./src/assets/logo.png')} // source da Image com require para buscar a imagem
+        source={require('./src/assets/logo.png')}
         style={styles.logo}
       />
       <Text style={styles.title}>
         {size} caracteres
       </Text>
       <View style={styles.area}>
-        <Slider                        //Slider com suas propriedades 
+        <Slider
           style={{ height: 50 }}
           minimumValue={6}
           maximumValue={20}
@@ -49,18 +43,24 @@ export default function App() {
           onValueChange={(value) => setSize(parseFloat(value.toFixed(0)))}
         />
       </View>
-      <TouchableOpacity style={styles.btn} onPress={generatePassword}> 
+      <TouchableOpacity style={styles.btn} onPress={generatePassword}>
         <Text style={styles.textBtn}>
           Gerar Senha
         </Text>
       </TouchableOpacity>
+
+      <Modal 
+         visible={openModal} 
+         animationType="fade"
+         transparent = {true}
+         >
+        <ModalPassword password={passwordValue} handleClose = {()=> setOpenModal(false)}/>
+         {/* password e handleClose são props enviadas para o modal */}
+      </Modal>
     </View>
   )
 }
 
-/**
- *  TouchableOpacity === button  onPress = OnClick
- */
 
 const styles = StyleSheet.create({
   container: {
