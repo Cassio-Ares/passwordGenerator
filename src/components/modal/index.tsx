@@ -3,8 +3,6 @@ import * as Clipboard from 'expo-clipboard'
 
 import useStorage from "../../hooks/useStorage";
 
-
-
 interface PropsModal {
     password: string,
     handleClose: () => void
