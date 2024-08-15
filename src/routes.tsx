@@ -1,20 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-/**
- *  npm install @react-navigation/bottom-tabs
- * 
- * recurso que cria a tab bar na parte inferior da tela
- */
-
-
 import { Home } from "./pages/Home";
 import { Passwords } from "./pages/password";
 
 import { Ionicons } from '@expo/vector-icons'
-/**
- * vector icons; icones 
- */
 
-// Declaração correta do Tab
 const Tab = createBottomTabNavigator();
 
 export function Routes() {

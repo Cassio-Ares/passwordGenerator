@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, TouchableOpacity, Pressable } from "react-native";
 import * as Clipboard from 'expo-clipboard'
-//npx expo install expo-clipboard
 
 import useStorage from "../../hooks/useStorage";
 

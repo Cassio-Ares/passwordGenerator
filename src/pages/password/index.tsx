@@ -1,33 +1,8 @@
 import { FlatList, StyleSheet, Text, View } from "react-native";
-/**
- * flatList tag similar ao um list + map
- */
-
 import { SafeAreaView } from "react-native-safe-area-context";
-/**
- * recurso usados junto ao React navigation
- * 
- *  npx expo install react-native-screens 
- *   
- * screens: melhora responsividade e transições de tela 
- * 
- * 
- * npx expo install react-native-safe-area-context
- * 
- * safe-Area ajusta os recurso na tela levando em considaração areas seguras, bordas arredondadas, ...
- * 
- */
-
-
 import { useState, useEffect } from "react";
 import { useIsFocused } from "@react-navigation/native";
 import useStorage from "../../hooks/useStorage";
-/**
- * npx expo install @react-native-async-storage/async-storage
- * 
- * recurso que cria um "back-end" na propria memoria do celular para salvar os dados
- */
-
 import PasswordItems from "../../components/passwordItems/PasswordItens";
 
 export function Passwords() {
