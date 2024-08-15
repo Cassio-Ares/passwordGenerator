@@ -47,21 +47,13 @@ export default function ModalPassword({ password, handleClose }: PropsModal) {
     )
 }
 
-/**
- *  
- * npx expo install @react-native-async-storage/async-storage
- * 
- * npm install @react-navigation/native
- * npx expo install react-native-screens react-native-safe-area-context
- * npm install @react-navigation/bottom-tabs
- */
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'rgba(24,24,24, 0.6)',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     content: {
         backgroundColor: '#ededed',
@@ -69,7 +61,8 @@ const styles = StyleSheet.create({
         paddingBottom: 24,
         paddingTop: 24,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        borderRadius: 8
 
     },
     title: {

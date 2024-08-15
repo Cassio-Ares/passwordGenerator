@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import AntDesign from '@expo/vector-icons/AntDesign';
-
+import * as Clipboard from 'expo-clipboard'
 
 interface Props {
     data: string,
@@ -8,11 +8,15 @@ interface Props {
 }
 
 export default function PasswordItems({ data, removePassword }: Props) {
+    const handleCopy = async () =>{
+      await Clipboard.setStringAsync(data)
+    }
+    
     return (
         <View style={styles.container}>
-            <View>
+            <Pressable onPress={handleCopy}>
                 <Text style={styles.password}>{data}</Text>
-            </View>
+            </Pressable>
             <Pressable onPress={removePassword}>
                 <AntDesign name="delete" size={20} color="white" />
             </Pressable>

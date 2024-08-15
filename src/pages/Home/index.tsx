@@ -1,15 +1,14 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View, Modal } from "react-native";
 import ModalPassword from "../../components/modal";
 import Slider from "@react-native-community/slider";
-
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useState } from "react";
 
 
 export function Home() {
   const [size, setSize] = useState(10)
   const [passwordValue, setPasswordValue] = useState('')
-  const [openModal, setOpenModal] = useState(false) // state para abrir e fechar o modal
-
+  const [openModal, setOpenModal] = useState(false)
   function generatePassword() {
     const hash = 'abcdefghijklmnopqrstuvwxyzAbCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
     let password = '';
@@ -20,17 +19,20 @@ export function Home() {
     }
 
     setPasswordValue(password)
-    setOpenModal(true)   //muda o state do modal 
+    setOpenModal(true)
   }
 
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.titleApp}>
+        Gerador e cofre de senhas
+      </Text>
       <Image
-        source={require('../../assets/logo.png')}
+        source={require('../../assets/logoTwo.jpg')}
         style={styles.logo}
       />
-      <Text style={styles.title}>
+      <Text style={styles.titlePass}>
         {size} caracteres
       </Text>
       <View style={styles.area}>
@@ -49,15 +51,14 @@ export function Home() {
         </Text>
       </TouchableOpacity>
 
-      <Modal 
-         visible={openModal} 
-         animationType="fade"
-         transparent = {true}
-         >
-        <ModalPassword password={passwordValue} handleClose = {()=> setOpenModal(false)}/>
-         {/* password e handleClose são props enviadas para o modal */}
+      <Modal
+        visible={openModal}
+        animationType="fade"
+        transparent={true}
+      >
+        <ModalPassword password={passwordValue} handleClose={() => setOpenModal(false)} />
       </Modal>
-    </View>
+    </SafeAreaView>
   )
 }
 
@@ -65,17 +66,32 @@ export function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#acabab'
+    backgroundColor: '#000000',
+    position: 'relative',
+    marginTop:35
+  },
+  titleApp: {
+    color: '#fff',
+    position: 'absolute',
+    top: 90,
+    zIndex: 2,
+    fontSize: 25,
+    fontWeight: 'bold',
   },
   logo: {
     marginBottom: 40,
+    marginTop: -30,
+    height: '80%',
+    width: '100%'
   },
-  title: {
+  titlePass: {
     color: '#fff',
     fontSize: 30,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    position: 'absolute',
+    zIndex: 2,
+    bottom: 230
   },
   area: {
     marginTop: 14,
@@ -91,6 +107,9 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     // Sombras para Android
     elevation: 10,
+    position: 'absolute',
+    zIndex: 2,
+    bottom: 120
   },
   btn: {
     width: '80%',
@@ -99,7 +118,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 8,
-    marginTop: 14,
+    marginTop: 20,
+
   },
   textBtn: {
     color: '#fff',
